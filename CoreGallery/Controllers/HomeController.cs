@@ -10,6 +10,8 @@ namespace CoreGallery.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IPhotoRepository _photoRepository; 
+
         public IActionResult Index()
         {
             return View();
