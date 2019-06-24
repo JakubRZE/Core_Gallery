@@ -1,10 +1,71 @@
-﻿@model List<Photo>
+﻿@model IEnumerable<Photo>
 
 @{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
+
+<div class="gallery-section">
+    <div class="inner-width">
+        <h1>Gallery</h1>
+        <div class="border"></div>
+        <div class="gallery">
+
+            <a href="~/image/img1.jpg" class="image">
+                <img src="~/image/img1.jpg" />
+            </a>
+
+            <a href="~/image/img2.jpg" class="image">
+                <img src="~/image/img2.jpg" />
+            </a>
+
+            <a href="~/image/img3.jpg" class="image">
+                <img src="~/image/img3.jpg" />
+            </a>
+
+            <a href="~/image/img4.jpg" class="image">
+                <img src="~/image/img4.jpg" />
+            </a>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(".gallery").magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+            enabled:true
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*<div class="text-center">
     <h1 class="display-4">Gallery</h1>
 
 
@@ -50,5 +111,5 @@
             }
         </div>
     </div>
-</div>
+</div>*@
 

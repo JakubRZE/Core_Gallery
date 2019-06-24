@@ -28,7 +28,7 @@ namespace CoreGallery.Models
             };
         }
 
-        public List<Photo> GetAllPhotos()
+        public IEnumerable<Photo> GetAllPhotos()
         {
             return _photos;
         }

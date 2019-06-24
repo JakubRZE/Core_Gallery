@@ -7,7 +7,7 @@ namespace CoreGallery.Models
 {
     public interface IPhotoRepository
     {
-        List<Photo> GetAllPhotos();
+        IEnumerable<Photo> GetAllPhotos();
 
         Photo GetPhotoById(int photoId);
     }

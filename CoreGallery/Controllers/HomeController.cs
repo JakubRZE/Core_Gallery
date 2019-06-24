@@ -19,7 +19,7 @@ namespace CoreGallery.Controllers
 
         public IActionResult Index()
         {
-            var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id).ToList();
+            var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id);
             return View(photos);
         }
 
