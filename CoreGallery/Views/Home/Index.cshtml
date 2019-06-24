@@ -11,11 +11,17 @@
         <div class="border"></div>
         <div class="gallery">
 
-            <a href="~/image/img1.jpg" class="image">
-                <img src="~/image/img1.jpg" />
-            </a>
+            @foreach (var photo in Model)
+            {
 
-            <a href="~/image/img2.jpg" class="image">
+                <a href="@photo.PhotoThumbnailUrl" class="image">
+                    <img src="@photo.PhotoThumbnailUrl" />
+                </a>
+
+            }
+
+
+            @*<a href="~/image/img2.jpg" class="image">
                 <img src="~/image/img2.jpg" />
             </a>
 
@@ -25,7 +31,7 @@
 
             <a href="~/image/img4.jpg" class="image">
                 <img src="~/image/img4.jpg" />
-            </a>
+            </a>*@
 
 
         </div>

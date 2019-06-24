@@ -58,7 +58,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2019 - CoreGallery - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - Gallery
         </div>
     </footer>
 
@@ -81,7 +81,6 @@
         </script>
     </environment>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/lightbox.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
