@@ -21,13 +21,14 @@ namespace CoreGallery.Models
         {
             _photos = new List<Photo>
             {
-                new Photo { Id=1, Description ="pierwsze", PhotoThumbnailUrl="#", PhotoUrl="#"},
-                new Photo { Id=2, Description ="drugie", PhotoThumbnailUrl="#", PhotoUrl="#"},
-                new Photo { Id=3, Description ="trzecie", PhotoThumbnailUrl="#", PhotoUrl="#"}
+                new Photo { Id=1, Description ="pierwsze", PhotoThumbnailUrl=@"/image/img1.jpg", PhotoUrl=@"/image/img2-full.jpeg"},
+                new Photo { Id=2, Description ="drugie", PhotoThumbnailUrl=@"/image/img2.jpg", PhotoUrl=@"/image/img2-full.jpeg"},
+                new Photo { Id=3, Description ="trzecie", PhotoThumbnailUrl=@"/image/img3.jpg", PhotoUrl=@"/image/img2-full.jpeg"},
+                new Photo { Id=3, Description ="czwarte", PhotoThumbnailUrl=@"/image/img4.jpg", PhotoUrl=@"/image/img2-full.jpeg"}
             };
         }
 
-        public IEnumerable<Photo> GetAllPhotos()
+        public List<Photo> GetAllPhotos()
         {
             return _photos;
         }

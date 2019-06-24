@@ -1,8 +1,54 @@
-﻿@{
+﻿@model List<Photo>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Gallery</h1>
+
+
+
+
+    <!-- Images used to open the lightbox -->
+    <div class="row">
+        @for (var i = 1; i <= Model.Count(); i++)
+        {
+            <div class="column">
+                <img src="@Model[i-1].PhotoThumbnailUrl" onclick="openModal();currentSlide( @i )" class="hover-shadow">
 </div>
+        }
+    </div>
+
+    <!-- The Modal/Lightbox -->
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+
+            @foreach (var photo in Model)
+            {
+                <div class="mySlides">
+                    <img src="@photo.PhotoUrl" style="width:100%">
+                </div>
+            }
+
+            <!-- Next/previous controls -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            <!-- Caption text -->
+            <div class="caption-container">
+                <p id="caption"></p>
+            </div>
+
+            <!-- Thumbnail image controls -->
+            @for (var i = 1; i <= Model.Count(); i++)
+            {
+                <div class="column">
+                    <img class="demo" src="@Model[i-1].PhotoThumbnailUrl" onclick="currentSlide( @i )" alt="Nature">
+                </div>
+            }
+        </div>
+    </div>
+</div>
+

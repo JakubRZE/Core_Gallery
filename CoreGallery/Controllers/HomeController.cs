@@ -10,11 +10,17 @@ namespace CoreGallery.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPhotoRepository _photoRepository; 
+        private readonly IPhotoRepository _photoRepository;
+
+        public HomeController(IPhotoRepository photoRepository)
+        {
+            _photoRepository = photoRepository;
+        }
 
         public IActionResult Index()
         {
-            return View();
+            var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id).ToList();
+            return View(photos);
         }
 
         public IActionResult Privacy()
