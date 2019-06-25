@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoreGallery.Models;
+using CoreGallery.ViewModels;
 
 namespace CoreGallery.Controllers
 {
@@ -20,7 +21,14 @@ namespace CoreGallery.Controllers
         public IActionResult Index()
         {
             var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id);
-            return View(photos);
+
+            var homeViewModel = new HomeViewModel()
+            {
+                Count = photos.Count(),
+                Photos = photos.ToList()
+            };
+
+            return View(homeViewModel);
         }
 
         public IActionResult Privacy()

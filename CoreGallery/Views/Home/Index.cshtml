@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Photo>
+﻿@model HomeViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,27 +11,27 @@
         <div class="border"></div>
         <div class="gallery">
 
-            @foreach (var photo in Model)
+            @foreach (var photo in Model.Photos)
             {
 
-                <a href="@photo.PhotoThumbnailUrl" class="image">
-                    <img src="@photo.PhotoThumbnailUrl" />
+                <a href="@photo.PhotoUrl" class="image">
+                    <img src="@photo.PhotoUrl" />
                 </a>
 
             }
 
 
             @*<a href="~/image/img2.jpg" class="image">
-                <img src="~/image/img2.jpg" />
-            </a>
+                    <img src="~/image/img2.jpg" />
+                </a>
 
-            <a href="~/image/img3.jpg" class="image">
-                <img src="~/image/img3.jpg" />
-            </a>
+                <a href="~/image/img3.jpg" class="image">
+                    <img src="~/image/img3.jpg" />
+                </a>
 
-            <a href="~/image/img4.jpg" class="image">
-                <img src="~/image/img4.jpg" />
-            </a>*@
+                <a href="~/image/img4.jpg" class="image">
+                    <img src="~/image/img4.jpg" />
+                </a>*@
 
 
         </div>
@@ -47,6 +47,30 @@
             enabled:true
         }
     });
+
+    var width = $(window).width();
+    if ((width > 960) && ((@Model.Count === 5) || (@Model.Count % 4 === 1))) {
+        $("img:last").css('max-height', '250px');
+    }
+    else {
+        $("img:last").css('max-height', '105px');
+    }
+
+
+    $(window).resize(function () {
+        width = $(window).width();
+        if ((width > 960) && ((@Model.Count === 5) || (@Model.Count % 4 === 1))) {
+            $("img:last").css('max-height', '250px');
+        }
+        else {
+            $("img:last").css('max-height', '105px');
+        }
+    });
+
+
+
+
+
 </script>
 
 
@@ -72,50 +96,50 @@
 
 
 @*<div class="text-center">
-    <h1 class="display-4">Gallery</h1>
+        <h1 class="display-4">Gallery</h1>
 
 
 
 
-    <!-- Images used to open the lightbox -->
-    <div class="row">
-        @for (var i = 1; i <= Model.Count(); i++)
-        {
-            <div class="column">
-                <img src="@Model[i-1].PhotoThumbnailUrl" onclick="openModal();currentSlide( @i )" class="hover-shadow">
-</div>
-        }
-    </div>
-
-    <!-- The Modal/Lightbox -->
-    <div id="myModal" class="modal">
-        <span class="close cursor" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-
-            @foreach (var photo in Model)
-            {
-                <div class="mySlides">
-                    <img src="@photo.PhotoUrl" style="width:100%">
-                </div>
-            }
-
-            <!-- Next/previous controls -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
-
-            <!-- Caption text -->
-            <div class="caption-container">
-                <p id="caption"></p>
-            </div>
-
-            <!-- Thumbnail image controls -->
+        <!-- Images used to open the lightbox -->
+        <div class="row">
             @for (var i = 1; i <= Model.Count(); i++)
             {
                 <div class="column">
-                    <img class="demo" src="@Model[i-1].PhotoThumbnailUrl" onclick="currentSlide( @i )" alt="Nature">
-                </div>
+                    <img src="@Model[i-1].PhotoThumbnailUrl" onclick="openModal();currentSlide( @i )" class="hover-shadow">
+    </div>
             }
         </div>
-    </div>
-</div>*@
+
+        <!-- The Modal/Lightbox -->
+        <div id="myModal" class="modal">
+            <span class="close cursor" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+
+                @foreach (var photo in Model)
+                {
+                    <div class="mySlides">
+                        <img src="@photo.PhotoUrl" style="width:100%">
+                    </div>
+                }
+
+                <!-- Next/previous controls -->
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+                <!-- Caption text -->
+                <div class="caption-container">
+                    <p id="caption"></p>
+                </div>
+
+                <!-- Thumbnail image controls -->
+                @for (var i = 1; i <= Model.Count(); i++)
+                {
+                    <div class="column">
+                        <img class="demo" src="@Model[i-1].PhotoThumbnailUrl" onclick="currentSlide( @i )" alt="Nature">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>*@
 
