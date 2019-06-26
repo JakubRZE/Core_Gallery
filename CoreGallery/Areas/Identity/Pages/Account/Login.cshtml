@@ -5,28 +5,25 @@
     ViewData["Title"] = "Log in";
 }
 
-
-
-
 <div class="row" style="margin-top:80px;">
     <div class="col-md-3">
     </div>
     <div class="col-md-6 bg-light round-borders">
-      
+
         <section>
             <form id="account" method="post">
 
                 <div class="text-center text-secondary" style="margin-top:10px;">
                     <h1>@ViewData["Title"]</h1>
                     <h4>Use your account to log in.</h4>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                 </div>
 
                 <hr />
-                <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="Input.Email"></label>
-                    <input asp-for="Input.Email" class="form-control" />
-                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                    <label asp-for="Input.UserName"></label>
+                    <input asp-for="Input.UserName" class="form-control" />
+                    <span asp-validation-for="Input.UserName" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Input.Password"></label>
@@ -41,13 +38,11 @@
                         </label>
                     </div>
                 </div>
-                <div class="form-group">
+
+                <div class="form-group text-center">
                     <button type="submit" class="btn btn-warning">Log in</button>
-                </div>
-                <div class="form-group">
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
+                    <hr>
+                    <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
                 </div>
             </form>
         </section>
@@ -58,9 +53,6 @@
     </div>
 </div>
 
-
-
-
-    @section Scripts {
-        <partial name="_ValidationScriptsPartial" />
-    }
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
