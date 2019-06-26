@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CoreGallery.DAL
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -18,13 +18,4 @@ namespace CoreGallery.DAL
 
         public DbSet<Photo> Photos { get; set; }
     }
-
-
-    //public class AppDbContext:IdentityDbContext<IdentityUser>
-    //{
-    //    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    //    {
-
-    //    }
-    //}
 }
