@@ -11,8 +11,6 @@ namespace CoreGallery.Models
 
         public string Description { get; set; }
 
-        public string PhotoUrl { get; set; }
-
-        public string PhotoThumbnailUrl { get; set; }
+        public string Path { get; set; }
     }
 }
