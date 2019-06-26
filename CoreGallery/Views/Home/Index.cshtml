@@ -20,20 +20,6 @@
 
             }
 
-
-            @*<a href="~/image/img2.jpg" class="image">
-                    <img src="~/image/img2.jpg" />
-                </a>
-
-                <a href="~/image/img3.jpg" class="image">
-                    <img src="~/image/img3.jpg" />
-                </a>
-
-                <a href="~/image/img4.jpg" class="image">
-                    <img src="~/image/img4.jpg" />
-                </a>*@
-
-
         </div>
     </div>
 </div>
@@ -49,7 +35,7 @@
     });
 
     var width = $(window).width();
-    if ((width > 960) && ((@Model.Count === 5) || (@Model.Count % 4 === 1))) {
+    if ((width > 960) && (@Model.Count % 4 === 1)) {
         $("img:last").css('max-height', '250px');
     }
     else {
@@ -59,18 +45,13 @@
 
     $(window).resize(function () {
         width = $(window).width();
-        if ((width > 960) && ((@Model.Count === 5) || (@Model.Count % 4 === 1))) {
+        if ((width > 960) && (@Model.Count % 4 === 1)) {
             $("img:last").css('max-height', '250px');
         }
         else {
             $("img:last").css('max-height', '105px');
         }
     });
-
-
-
-
-
 </script>
 
 
