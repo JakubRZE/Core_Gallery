@@ -1,0 +1,33 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
+    <div class="container">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoreGallery</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="border-left">
+                    <a class="navbar-light navbar-nav nav-link" href="#" id="addphoto">Add photo</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto">
+                <partial name="_LoginPartial" />
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" hidden>
+    <div class="container">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item border-left">
+                <a class="navbar-light navbar-nav nav-link" asp-area="" asp-controller="Home" asp-action="Index">Add photo</a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <partial name="_LoginPartial" />
+        </ul>
+    </div>
+</nav>
+

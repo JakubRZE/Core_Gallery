@@ -26,29 +26,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <script src="~/js/site.js"></script>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">CoreGallery</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item border-left">
-                            <a class="navbar-light navbar-nav nav-link" asp-area="" asp-controller="Home" asp-action="Index">Add photo</a>
-                        </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <partial name="_LoginPartial" />
-                        </ul>   
-                </div>
-            </div>
-        </nav>
+        <partial name="_NavbarPartial" />
     </header>
     <div class="container">
         <partial name="_CookieConsentPartial" />
@@ -85,3 +67,12 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+$(document).ready(() => {
+
+    $(".addPhoto").click(() => {
+        $(".addPhotoPop").toggle();
+    });
+
+});
+
