@@ -17,7 +17,8 @@ namespace CoreGallery.Models
                   new Photo { Description = "pierwsze", Path = @"/image/img1.jpg" },
                   new Photo { Description = "drugie", Path = @"/image/img2.jpg" },
                   new Photo { Description = "trzecie", Path = @"/image/img3.jpg" },
-                  new Photo { Description = "czwarte", Path = @"/image/img4.jpg" }
+                  new Photo { Description = "czwarte", Path = @"/image/img4.jpg" },
+                  new Photo { Description = "five", Path = @"/image/img5.jpg" }
                 );
 
                 context.SaveChanges();

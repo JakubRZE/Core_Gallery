@@ -26,14 +26,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="~/js/site.js"></script>
 </head>
 <body>
     <header>
         <partial name="_NavbarPartial" />
     </header>
     <div class="container">
-        <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
@@ -67,12 +65,4 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
-
-$(document).ready(() => {
-
-    $(".addPhoto").click(() => {
-        $(".addPhotoPop").toggle();
-    });
-
-});
 
