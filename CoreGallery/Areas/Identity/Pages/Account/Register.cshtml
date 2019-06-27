@@ -6,13 +6,13 @@
 
 
 
-<div class="row" style="margin-top:80px">
+<div class="row mt-5">
     <div class="col-md-3">
     </div>
     <div class="col-md-6 bg-light round-borders">
         <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
 
-            <div class="text-center text-secondary" style="padding:20px;">
+            <div class="text-center text-secondary p-4">
                 <h1>Create a new account.</h1>
             </div>
 
@@ -32,7 +32,7 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
-            <div class="text-center" style="padding:20px;">
+            <div class="text-center p-4 mb-2">
                 <button type="submit" class="btn btn-warning">Register</button>
             </div>
         </form>
