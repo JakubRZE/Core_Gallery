@@ -63,3 +63,18 @@ body {
 .round-borders {
 border-radius: 15px;
 }
+
+.active-pink-2 input[type=text] {
+    opacity: 0.7;
+    border: none;
+    border-bottom: 2px solid #ffc619;
+}
+
+
+    .active-pink-2 input[type=text]:focus:not([readonly]) {
+        opacity: 1;
+        background-color: #f9f8f8;
+        border: none;
+        border-bottom: 1px solid #ffc107;
+        box-shadow: 0 1px 0 0 #ffc107;
+    }

@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@inject UserManager<IdentityUser> UserManager
 
 @{
     Layout = "/Views/Shared/_Layout.cshtml";
@@ -22,13 +23,20 @@
     </div>
 
     <div class="row">
-        <div class="col-3 bg-light round-borders">
+        <div class="col-3 ">
 
-            <h4 class="text-center p-4">Profile info</h4>
-            <hr />
-            User name: ...
-            <hr />
-           Uploaded photos: ...
+            <div class="bg-light round-borders p-2">
+                <h4 class="text-center p-1 mt-4">Profile info</h4>
+                <hr />
+                <p> User name: <strong>@UserManager.GetUserName(User)</strong></p>
+                <hr />
+                <p> Uploaded photos: ... </p>
+            </div>
+
+            <div class="bg-light round-borders p-1 mt-1 text-center">
+                <a href="#" class="navbar-light navbar-nav nav-link" style="color: black;">Change password.</a>
+            </div>
+
         </div>
 
         <div class="col-9 text-center text-white">
@@ -41,16 +49,21 @@
             <hr />
             lol
 
+            <hr />
+            lol
+            <hr />
+            space for photos
+            <hr />
+            lol
+            <hr />
+            lol
+            <hr />
+            space for photos
+            <hr />
+            lol
+
         </div>
     </div>
-
-    <div class="row mt-2">
-        <div class="col-3 bg-light round-borders">
-            Change password.
-        </div>
-
-    </div>
-    <div class="col-9"></div>
 </div>
 
 
