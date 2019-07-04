@@ -1,7 +1,7 @@
 ﻿$(document).ready(() => {
 
     $("#addPhoto").click(() => {
-        $("#addPhotoPop").toggle();
+        $("#addPhotoPop").slideToggle("slow");
     });
 
 });

@@ -61,7 +61,7 @@ body {
 }
 
 .round-borders {
-border-radius: 15px;
+    border-radius: 15px;
 }
 
 .active-pink-2 input[type=text] {
@@ -78,3 +78,12 @@ border-radius: 15px;
         border-bottom: 1px solid #ffc107;
         box-shadow: 0 1px 0 0 #ffc107;
     }
+
+.customInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0;
+    font-weight: bold;
+    margin: 0;
+}

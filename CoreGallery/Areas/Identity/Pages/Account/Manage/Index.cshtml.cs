@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using CoreGallery.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,20 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
 
+        private readonly IPhotoRepository _photoRepository;
+
         public IndexModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+
+            IPhotoRepository photoRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+
+            _photoRepository = photoRepository;
         }
 
         public string Username { get; set; }
@@ -46,6 +53,8 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
             [Phone]
             [Display(Name = "Phone number")]
             public string PhoneNumber { get; set; }
+
+            public int photoCount { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -60,12 +69,16 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
+            var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id);
+
             Username = userName;
 
             Input = new InputModel
             {
                 Email = email,
-                PhoneNumber = phoneNumber
+                PhoneNumber = phoneNumber,
+
+                photoCount = photos.Count()
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);
