@@ -87,3 +87,12 @@ body {
     font-weight: bold;
     margin: 0;
 }
+
+.customLinkDiv {
+    background-color: #ffc107;
+    cursor: pointer;
+}
+
+    .customLinkDiv :hover {
+        background-color: #ffca2c;
+    }
