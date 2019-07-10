@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreGallery.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20190626123729_IdentityAdded")]
-    partial class IdentityAdded
+    [Migration("20190710220150_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -30,6 +30,8 @@ namespace CoreGallery.Migrations
                     b.Property<string>("Description");
 
                     b.Property<string>("Path");
+
+                    b.Property<string>("UserId");
 
                     b.HasKey("Id");
 
@@ -153,9 +155,11 @@ namespace CoreGallery.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(128);
 
-                    b.Property<string>("ProviderKey");
+                    b.Property<string>("ProviderKey")
+                        .HasMaxLength(128);
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -186,9 +190,11 @@ namespace CoreGallery.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider");
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(128);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .HasMaxLength(128);
 
                     b.Property<string>("Value");
 

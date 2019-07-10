@@ -15,12 +15,12 @@ namespace CoreGallery.Controllers
     public class HomeController : Controller
     {
         private readonly IPhotoRepository _photoRepository;
-        private readonly IHostingEnvironment _appEnvironment;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public HomeController(IPhotoRepository photoRepository, IHostingEnvironment appEnvironment)
+        public HomeController(IPhotoRepository photoRepository, IHostingEnvironment hostingEnvironment)
         {
             _photoRepository = photoRepository;
-            _appEnvironment = appEnvironment;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Index()
@@ -38,25 +38,37 @@ namespace CoreGallery.Controllers
 
         //Add photo
         [HttpPost]
-        public async Task<IActionResult> PhotoUpload(IFormFile file)
+        public IActionResult PhotoUpload(Photo model)
         {
-            //< check >
-            if (file == null || file.Length == 0) return Content("file not selected");
-
-            //< get Path >
-            string path_Root = _appEnvironment.WebRootPath;
-            string path_to_Images = path_Root + "\\User_Files\\Images\\" + file.FileName;
-
-            //< Copy File to Target >
-            using (var stream = new FileStream(path_to_Images, FileMode.Create))
+            if (ModelState.IsValid)
             {
-                await file.CopyToAsync(stream);
+
             }
 
-            //< output >
-            ViewData["FilePath"] = path_to_Images;
             return RedirectToAction("Index", "Home");
-
         }
+
+
+        //[HttpPost]
+        //public async Task<IActionResult> PhotoUpload(IFormFile file)
+        //{
+        //    //< check >
+        //    if (file == null || file.Length == 0) return Content("file not selected");
+
+        //    //< get Path >
+        //    string path_Root = _appEnvironment.WebRootPath;
+        //    string path_to_Images = path_Root + "\\User_Files\\Images\\" + file.FileName;
+
+        //    //< Copy File to Target >
+        //    using (var stream = new FileStream(path_to_Images, FileMode.Create))
+        //    {
+        //        await file.CopyToAsync(stream);
+        //    }
+
+        //    //< output >
+        //    ViewData["FilePath"] = path_to_Images;
+        //    return RedirectToAction("Index", "Home");
+
+        //}
     }
 }

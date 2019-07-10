@@ -4,7 +4,7 @@
         $("#addPhotoPop").slideToggle("slow");
     });
 
-    $('input[type=file]').change(function (e) {
+    $('input[type=file]').change(() => {
         $in = $(this);
         $in.next().html($in.val().split("\\").pop());
     });
