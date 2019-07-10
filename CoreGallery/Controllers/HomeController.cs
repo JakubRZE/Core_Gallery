@@ -38,7 +38,7 @@ namespace CoreGallery.Controllers
 
         //Add photo
         [HttpPost]
-        public IActionResult PhotoUpload(Photo model)
+        public IActionResult UploadPhoto(Photo model)
         {
             if (ModelState.IsValid)
             {

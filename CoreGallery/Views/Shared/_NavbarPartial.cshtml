@@ -28,7 +28,7 @@
             <ul class="navbar-nav ml-auto">
                 <li class="border-right">
                     <form class="form-inline md-form form-sm active-pink-2 mt-1">
-                        <input class="form-control form-control-sm nav-link active-pink-2 mr-3 w-100 pl-2 pr-2" name="photoInput" type="text" placeholder="Search for user..."
+                        <input class="form-control form-control-sm nav-link active-pink-2 mr-3 w-100 pl-2 pr-2" type="text" placeholder="Search for user..."
                                aria-label="Search">
                         @*<i class="fas fa-search" aria-hidden="true"></i>*@
                     </form>
@@ -39,18 +39,21 @@
     </div>
 </nav>
 
-<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" style="display: none">
-    <div class="container p-2">
-        <div class="custom-file col-xs-3">
-            <input type="file" class="custom-file-input" id="customFileLang">
-            <label class="custom-file-label" for="customFileLang">Choose file...</label>
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="UploadPhoto">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" style="display: none">
+        <div class="container p-2">
+            <div class="custom-file col-xs-3">
+                <input type="file" class="custom-file-input">
+                <label class="custom-file-label">Choose file...</label>
+            </div>
+            <div class="custom-file col-xs-4 ml-5 ">
+                <input type="text" class="form-control" placeholder="Description...">
+            </div>
+            <div class="custom-file text-right">
+                <button type="submit" class="btn badge-warning pr-5 pl-5 mr-4">Add</button>
+            </div>
         </div>
-        <div class="custom-file col-xs-4 ml-5 ">
-            <input type="text" class="form-control" placeholder="Description...">
-        </div>
-        <div class="custom-file text-right">
-            <button type="button" class="btn badge-warning pr-5 pl-5 mr-4">Add</button>
-        </div>
-    </div>
-</nav>
+    </nav>
+</form>
+
 
