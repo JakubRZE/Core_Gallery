@@ -1,4 +1,5 @@
 ﻿@inject SignInManager<IdentityUser> SignInManager
+@model HomeViewModel
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
     <div class="container">
@@ -43,11 +44,11 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" style="display: none">
         <div class="container p-2">
             <div class="custom-file col-xs-3">
-                <input type="file" class="custom-file-input">
+                <input asp-for="Photo" class="custom-file-input">
                 <label class="custom-file-label">Choose file...</label>
             </div>
             <div class="custom-file col-xs-4 ml-5 ">
-                <input type="text" class="form-control" placeholder="Description...">
+                <input asp-for="Description" class="form-control" placeholder="Description...">
             </div>
             <div class="custom-file text-right">
                 <button type="submit" class="btn badge-warning pr-5 pl-5 mr-4">Add</button>

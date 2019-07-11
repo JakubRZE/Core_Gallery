@@ -10,5 +10,7 @@ namespace CoreGallery.Models
         IEnumerable<Photo> GetAllPhotos();
 
         Photo GetPhotoById(int photoId);
+
+        void AddPhoto(Photo photo);
     }
 }

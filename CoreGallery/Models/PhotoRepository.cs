@@ -25,5 +25,11 @@ namespace CoreGallery.Models
         {
             return _appDbContext.Photos.FirstOrDefault(p => p.Id == photoId);
         }
+
+        public void AddPhoto(Photo photo)
+        {
+            _appDbContext.Photos.Add(photo);
+            _appDbContext.SaveChanges();
+        }
     }
 }

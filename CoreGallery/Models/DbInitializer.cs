@@ -14,11 +14,11 @@ namespace CoreGallery.Models
             {
                 context.AddRange
                 (
-                  new Photo { Description = "pierwsze", Path = @"/image/img1.jpg" },
-                  new Photo { Description = "drugie", Path = @"/image/img2.jpg" },
-                  new Photo { Description = "trzecie", Path = @"/image/img3.jpg" },
-                  new Photo { Description = "czwarte", Path = @"/image/img4.jpg" },
-                  new Photo { Description = "five", Path = @"/image/img5.jpg" }
+                  new Photo { Description = "pierwsze", Path = @"/images/img1.jpg" },
+                  new Photo { Description = "drugie", Path = @"/images/img2.jpg" },
+                  new Photo { Description = "trzecie", Path = @"/images/img3.jpg" },
+                  new Photo { Description = "czwarte", Path = @"/images/img4.jpg" },
+                  new Photo { Description = "five", Path = @"/images/img5.jpg" }
                 );
 
                 context.SaveChanges();
