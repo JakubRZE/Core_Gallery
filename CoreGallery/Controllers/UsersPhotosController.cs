@@ -18,15 +18,16 @@ namespace CoreGallery.Controllers
         }
 
 
-        public IActionResult Index(string userId)
+        public IActionResult Index(string name)
         {
+            var userId = _photoRepository.GetUsers().Where(u => u.UserName == name).Select( o => o.Id).FirstOrDefault();
             var photos = _photoRepository.GetAllPhotos().Where(x => x.UserId == userId).OrderBy(p => p.Id);
 
             var UsersPhotosVM = new UsersPhotosViewModel()
             {
                 Count = photos.Count(),
                 Photos = photos.ToList(),
-                UserName = _photoRepository.GetUsers().Where(p => p.Id == userId).Select(x => x.UserName).FirstOrDefault()
+                UserName = name
             };
 
             return View(UsersPhotosVM);
