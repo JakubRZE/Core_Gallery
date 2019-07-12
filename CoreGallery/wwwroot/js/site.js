@@ -1,4 +1,4 @@
-﻿var users = null;
+﻿var users = [];
 
 $(document).ready(() => {
 
@@ -18,45 +18,15 @@ $(document).ready(() => {
     });
 
 
-    $(function () {
-        var availableTags = [
-            "ActionScript",
-            "AppleScript",
-            "Asp",
-            "BASIC",
-            "C",
-            "C++",
-            "Clojure",
-            "COBOL",
-            "ColdFusion",
-            "Erlang",
-            "Fortran",
-            "Groovy",
-            "Haskell",
-            "Java",
-            "JavaScript",
-            "Lisp",
-            "Perl",
-            "PHP",
-            "Python",
-            "Ruby",
-            "Scala",
-            "Scheme"
-        ];
-        $("#searchInput").autoomplete({
-            source: availableTags
-        });
-    });
-
-
-
-
-
-
-
     /////
 
-
+    $(".gallery").magnificPopup({
+        delegate: 'a',
+        type: 'image',
+        gallery: {
+            enabled: true
+        }
+    });
 
     ///
 
@@ -70,12 +40,17 @@ function search(event) {
     event.preventDefault();
     event.stopImmediatePropagation();
 
-    !users && $.ajax({
+    !users.length && $.ajax({
         url: '/Home/GetUsers',
         method: 'GET',
         dataType: 'json',
         success: (response) => {
             users = response;
+
+            $("#searchInput").autocomplete({
+                source: users
+            });
+
         },
         error: () => {
             alert("Lipa");

@@ -22,36 +22,9 @@
     </div>
 </div>
 
-
-<script>
-    $(".gallery").magnificPopup({
-        delegate: 'a',
-        type: 'image',
-        gallery: {
-            enabled:true
-        }
-    });
-
-    var width = $(window).width();
-    if ((width > 960) && (@Model.Count % 4 === 1)) {
-        $("img:last").css('max-height', '250px');
-    }
-    else {
-        $("img:last").css('max-height', '105px');
-    }
-
-
-    $(window).resize(function () {
-        width = $(window).width();
-        if ((width > 960) && (@Model.Count % 4 === 1)) {
-            $("img:last").css('max-height', '250px');
-        }
-        else {
-            $("img:last").css('max-height', '105px');
-        }
-    });
-</script>
-
+@section GalleryScripts {
+    <partial name="_GalleryScriptsPartial" />
+}
 
 
 
