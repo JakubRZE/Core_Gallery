@@ -55,6 +55,8 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
             public string PhoneNumber { get; set; }
 
             public int photoCount { get; set; }
+
+            public List<Photo> Photos { get; set; }
         }
 
         public async Task<IActionResult> OnGetAsync()
@@ -69,7 +71,7 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            var photos = _photoRepository.GetAllPhotos().OrderBy(p => p.Id);
+            var photos = _photoRepository.GetAllPhotos().Where(x => x.UserId == _userManager.GetUserId(User)).OrderBy(p => p.Id);
 
             Username = userName;
 
@@ -78,7 +80,8 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
                 Email = email,
                 PhoneNumber = phoneNumber,
 
-                photoCount = photos.Count()
+                photoCount = photos.Count(),
+                Photos = photos.ToList()
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

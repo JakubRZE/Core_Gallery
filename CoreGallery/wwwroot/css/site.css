@@ -73,7 +73,7 @@ body {
 
     .active-pink-2 input[type=text]:focus:not([readonly]) {
         opacity: 1;
-        background-color: #f9f8f8;
+        /*background-color: #f9f8f8;*/
         border: none;
         border-bottom: 1px solid #ffc107;
         box-shadow: 0 1px 0 0 #ffc107;
@@ -96,3 +96,21 @@ body {
     .customLinkDiv :hover {
         background-color: #ffca2c;
     }
+
+
+.customSearch:hover {
+    color: #ffca2c;
+}
+
+
+.customBin {
+    color: #ffc107;
+}
+
+    .customBin:hover {
+        color:red;
+    }
+
+.customBg {
+    background-color: #292929;
+}
