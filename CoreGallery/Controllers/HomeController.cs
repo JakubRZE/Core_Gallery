@@ -71,6 +71,11 @@ namespace CoreGallery.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-    
+
+        public JsonResult GetUsers()
+        {
+            var users = _photoRepository.GetUsers().Select(x => x.UserName);
+            return Json(users);
+        }
     }
 }

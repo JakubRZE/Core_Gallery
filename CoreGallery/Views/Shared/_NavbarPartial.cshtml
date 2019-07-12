@@ -1,5 +1,4 @@
 ﻿@inject SignInManager<IdentityUser> SignInManager
-@model HomeViewModel
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow">
     <div class="container">
@@ -29,9 +28,8 @@
             <ul class="navbar-nav ml-auto">
                 <li class="border-right">
                     <form class="form-inline md-form form-sm active-pink-2 mt-1">
-                        <input class="form-control form-control-sm nav-link active-pink-2 mr-3 w-100 pl-2 pr-2" type="text" placeholder="Search for user..."
+                        <input id="searchInput" class="form-control form-control-sm nav-link active-pink-2 mr-3 w-100 pl-2 pr-2 autocomplete" type="text" placeholder="Search for user..."
                                aria-label="Search">
-                        @*<i class="fas fa-search" aria-hidden="true"></i>*@
                     </form>
                 </li>
                 <partial name="_LoginPartial" />
@@ -44,11 +42,11 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" style="display: none">
         <div class="container p-2">
             <div class="custom-file col-xs-3">
-                <input asp-for="Photo" class="custom-file-input">
+                <input name="Photo" class="custom-file-input" type="file">
                 <label class="custom-file-label">Choose file...</label>
             </div>
             <div class="custom-file col-xs-4 ml-5 ">
-                <input asp-for="Description" class="form-control" placeholder="Description...">
+                <input name="Description" class="form-control" placeholder="Description..." type="text">
             </div>
             <div class="custom-file text-right">
                 <button type="submit" class="btn badge-warning pr-5 pl-5 mr-4">Add</button>

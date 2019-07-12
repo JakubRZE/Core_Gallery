@@ -1,4 +1,5 @@
 ﻿using CoreGallery.DAL;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace CoreGallery.Models
         {
             _appDbContext.Photos.Add(photo);
             _appDbContext.SaveChanges();
+        }
+
+        public IEnumerable<IdentityUser> GetUsers()
+        {
+            return _appDbContext.Users;
         }
     }
 }
