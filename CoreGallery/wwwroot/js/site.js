@@ -31,6 +31,12 @@ $(document).ready(() => {
     ///
 
 
+    //submit search
+    $(".customSearch").on("click", (e) => {
+        $("#searchForm").submit();
+        e.preventDefault();
+    });
+
 });
 
 
