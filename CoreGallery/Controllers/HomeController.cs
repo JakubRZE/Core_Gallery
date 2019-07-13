@@ -51,25 +51,21 @@ namespace CoreGallery.Controllers
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + model.Photo.FileName;
                     string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                     model.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+
+                    var claimsIdentity = (ClaimsIdentity)this.User.Identity;
+                    var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
+                    var userId = claim.Value;
+
+                    Photo newPhoto = new Photo
+                    {
+                        Description = model.Description,
+                        UserId = userId,
+                        Path = @"/images/" + uniqueFileName
+                    };
+                    _photoRepository.AddPhoto(newPhoto);
                 }
-
-                // get logged user id
-                var claimsIdentity = (ClaimsIdentity)this.User.Identity;
-                var claim = claimsIdentity.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier);
-                var userId = claim.Value;
-
-                Photo newPhoto = new Photo
-                {
-                    Description = model.Description,
-                    UserId = userId,
-                    Path = @"/images/" + uniqueFileName
-                };
-
-                _photoRepository.AddPhoto(newPhoto);
-
                 return RedirectToAction("Index", "Home");
             }
-
             return RedirectToAction("Index", "Home");
         }
 

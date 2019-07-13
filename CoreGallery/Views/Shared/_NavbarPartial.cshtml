@@ -39,7 +39,7 @@
     </div>
 </nav>
 
-<form enctype="multipart/form-data" asp-controller="Home" asp-action="UploadPhoto">
+<form enctype="multipart/form-data" asp-controller="Home" asp-action="UploadPhoto" id="photoForm">
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3" id="addPhotoPop" style="display: none">
         <div class="container p-2">
             <div class="custom-file col-xs-3">
@@ -50,7 +50,7 @@
                 <input name="Description" class="form-control" placeholder="Description..." type="text">
             </div>
             <div class="custom-file text-right">
-                <button type="submit" class="btn badge-warning pr-5 pl-5 mr-4">Add</button>
+                <button id="photoSubmitBtn" class="btn badge-warning pr-5 pl-5 mr-4" type="button">Add</button>
             </div>
         </div>
     </nav>

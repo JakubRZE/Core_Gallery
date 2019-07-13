@@ -2,24 +2,40 @@
 
 $(document).ready(() => {
 
+    AddPhotoButtonSlideToggle();
+
+    DisplayUploadedfileName();
+
+    RunAutocomplete();
+
+    RunMagnificPopupGallery();
+
+    SearchForUsers();
+
+    SubmitPhotoUpload();
+
+});
+
+function AddPhotoButtonSlideToggle() {
     $("#addPhoto").click(() => {
         $("#addPhotoPop").slideToggle("slow");
     });
+}
 
+function DisplayUploadedfileName() {
     $('input[type=file]').change(function (e) {
         $in = $(this);
         $in.next().html($in.val().split("\\").pop());
     });
+}
 
-
-
+function RunAutocomplete() {
     $("#searchInput").on("click", (e) => {
         search(e);
     });
+}
 
-
-    /////
-
+function RunMagnificPopupGallery() {
     $(".gallery").magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -27,19 +43,14 @@ $(document).ready(() => {
             enabled: true
         }
     });
+}
 
-    ///
-
-
-    //submit search
+function SearchForUsers() {
     $(".customSearch").on("click", (e) => {
         $("#searchForm").submit();
         e.preventDefault();
     });
-
-});
-
-
+}
 
 function search(event) {
 
@@ -64,10 +75,19 @@ function search(event) {
     });
 };
 
-
-
-
 function handleError(response) {
     console.log(response.responseText);
     alert('Something goes worng :<');
+}
+
+function SubmitPhotoUpload() {
+    $("#photoSubmitBtn").on("click", () => {
+        if ($(".custom-file-input").get(0).files.length === 0) {
+            $(".custom-file-label").effect("shake");
+        }
+        else {
+            $("#photoForm").submit();
+            e.preventDefault();
+        }
+    });
 }
