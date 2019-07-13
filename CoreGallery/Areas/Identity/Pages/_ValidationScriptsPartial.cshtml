@@ -18,13 +18,18 @@
 </environment>
 
 <script>
-    loadData();
-    
-    function loadData() {
-        debugger;
-        //$("#taskList children").remove();
-        jQuery('#gallery').empty();
 
+    loadData();
+
+
+    $(document).on("click", ".customBin", (event) => {
+        var photoId = event.target.id;
+        deletePhoto(photoId);
+    });
+
+    debugger;
+    function loadData() {
+        jQuery('.gallery').empty();
         $.ajax({
             url: '/UsersPhotos/GetMyPhotos',
             method: 'GET',
@@ -46,4 +51,22 @@
             error: (response) => { handleError(response) }
         });
     };
+
+    function deletePhoto(photoId) {
+        if (confirm('Are you sure to delete this Photo?') == true) {
+            $.ajax({
+                url: "/UsersPhotos/DeletePhoto",
+                method: "POST",
+                //contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+                dataType: "json",
+                data:
+                {
+                    //__RequestVerificationToken: token,
+                    id: photoId
+                },
+                success: () => { loadData(); },
+                error: (response) => { handleError(response) }
+            });
+        }
+    }
 </script>

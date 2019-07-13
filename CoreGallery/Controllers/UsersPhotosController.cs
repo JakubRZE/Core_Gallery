@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using CoreGallery.Models;
 using CoreGallery.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,11 +16,13 @@ namespace CoreGallery.Controllers
     {
         private readonly IPhotoRepository _photoRepository;
         private readonly UserManager<IdentityUser> _userManager;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public UsersPhotosController(IPhotoRepository photoRepository, UserManager<IdentityUser> userManager)
+        public UsersPhotosController(IPhotoRepository photoRepository, UserManager<IdentityUser> userManager, IHostingEnvironment hostingEnvironment)
         {
             _photoRepository = photoRepository;
             _userManager = userManager;
+            _hostingEnvironment = hostingEnvironment;
         }
 
     
@@ -43,6 +48,30 @@ namespace CoreGallery.Controllers
             var photos = _photoRepository.GetAllPhotos().Where(x => x.UserId == userId).OrderBy(p => p.Id).ToList();
 
             return Json(photos);
+        }
+
+        [HttpPost]
+        public JsonResult DeletePhoto(int id)
+        {
+            var photo = _photoRepository.GetPhotoById(id);
+            var serverPath = _hostingEnvironment.WebRootPath;
+            string fullPath = serverPath + photo.Path;
+
+            fullPath = fullPath.Replace(@"\\", @"\").Replace(@"/", @"\");
+
+            if (System.IO.File.Exists(fullPath))
+            {
+                try
+                {
+                    System.IO.File.Delete(fullPath);
+                }
+                catch(DataException dex)
+                {
+                    return Json(dex);
+                }
+                _photoRepository.DeletePhoto(id);
+            }
+            return Json("lol");
         }
     }
 }

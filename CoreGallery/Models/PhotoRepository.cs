@@ -37,5 +37,12 @@ namespace CoreGallery.Models
         {
             return _appDbContext.Users;
         }
+
+        public void DeletePhoto(int id)
+        {
+                Photo photo = _appDbContext.Photos.Find(id);
+                _appDbContext.Photos.Remove(photo);
+                _appDbContext.SaveChanges();
+        }
     }
 }

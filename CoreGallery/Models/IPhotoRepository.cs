@@ -14,6 +14,8 @@ namespace CoreGallery.Models
 
         void AddPhoto(Photo photo);
 
+        void DeletePhoto(int id);
+
         IEnumerable<IdentityUser> GetUsers();
     }
 }

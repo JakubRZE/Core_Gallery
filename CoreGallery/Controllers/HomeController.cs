@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using System.IO;
 using System.Security.Claims;
+using System.Data;
 
 namespace CoreGallery.Controllers
 {
@@ -70,15 +71,6 @@ namespace CoreGallery.Controllers
             }
 
             return RedirectToAction("Index", "Home");
-        }
-
-        [HttpPost]
-        public JsonResult DeletePhoto(HomeViewModel model)
-        {
-
-
-
-            return Json("lol");
         }
 
         public JsonResult GetUsers()

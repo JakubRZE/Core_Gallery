@@ -67,4 +67,7 @@ function search(event) {
 
 
 
-
+function handleError(response) {
+    console.log(response.responseText);
+    alert('Something goes worng :<');
+}
