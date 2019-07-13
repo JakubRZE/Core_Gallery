@@ -72,6 +72,15 @@ namespace CoreGallery.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
+        public JsonResult DeletePhoto(HomeViewModel model)
+        {
+
+
+
+            return Json("lol");
+        }
+
         public JsonResult GetUsers()
         {
             var users = _photoRepository.GetUsers().Select(x => x.UserName);

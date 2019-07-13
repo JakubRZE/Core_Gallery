@@ -18,20 +18,21 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly IEmailSender _emailSender;
 
-        private readonly IPhotoRepository _photoRepository;
+        //private readonly IPhotoRepository _photoRepository;
 
         public IndexModel(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
-            IEmailSender emailSender,
+            IEmailSender emailSender
 
-            IPhotoRepository photoRepository)
+            //IPhotoRepository photoRepository
+            )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
 
-            _photoRepository = photoRepository;
+            //_photoRepository = photoRepository;
         }
 
         public string Username { get; set; }
@@ -71,17 +72,17 @@ namespace CoreGallery.Areas.Identity.Pages.Account.Manage
             var email = await _userManager.GetEmailAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 
-            var photos = _photoRepository.GetAllPhotos().Where(x => x.UserId == _userManager.GetUserId(User)).OrderBy(p => p.Id);
+            //var photos = _photoRepository.GetAllPhotos().Where(x => x.UserId == _userManager.GetUserId(User)).OrderBy(p => p.Id);
 
-            Username = userName;
+            //Username = userName;
 
             Input = new InputModel
             {
                 Email = email,
                 PhoneNumber = phoneNumber,
 
-                photoCount = photos.Count(),
-                Photos = photos.ToList()
+                //photoCount = photos.Count()
+                //Photos = photos.ToList()
             };
 
             IsEmailConfirmed = await _userManager.IsEmailConfirmedAsync(user);

@@ -16,3 +16,34 @@
             integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
     </script>
 </environment>
+
+<script>
+    loadData();
+    
+    function loadData() {
+        debugger;
+        //$("#taskList children").remove();
+        jQuery('#gallery').empty();
+
+        $.ajax({
+            url: '/UsersPhotos/GetMyPhotos',
+            method: 'GET',
+            dataType: 'json',
+            success: (data) => {
+                $.each(data, (i, photos) => {
+                    var photoHtml =
+                        `<div class="image d-block p-0 m-2">
+                             <a href="${photos.path}" class="image">
+                                 <img src="${photos.path}" />
+                             </a>
+                             <div class="position-relative customBg">
+                                 <i class="far fa-trash-alt d-inline customBin" id="${photos.id}"></i>
+                            </div>
+                        </div>`;
+                    $('.gallery').append(photoHtml);
+                });
+            },
+            error: (response) => { handleError(response) }
+        });
+    };
+</script>
