@@ -1,6 +1,6 @@
 <h3>Gallery Web Application</h3>
 
-ASP.NET MVC Core 2.2 Application \ bootstrap \ jQuery \ AJAX.
+ASP.NET MVC Core 2.2 Application \ EF Core \ bootstrap \ jQuery \ AJAX.
 
 <br /><br />
 Share your photos:)
