@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CoreGallery.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace CoreGallery.Models
 
         Photo GetPhotoById(int photoId);
 
-        void AddPhoto(Photo photo);
+        void AddPhoto(HomeViewModel model);
 
         void DeletePhoto(int id);
 

@@ -53,25 +53,8 @@ namespace CoreGallery.Controllers
         [HttpPost]
         public JsonResult DeletePhoto(int id)
         {
-            var photo = _photoRepository.GetPhotoById(id);
-            var serverPath = _hostingEnvironment.WebRootPath;
-            string fullPath = serverPath + photo.Path;
-
-            fullPath = fullPath.Replace(@"\\", @"\").Replace(@"/", @"\");
-
-            if (System.IO.File.Exists(fullPath))
-            {
-                try
-                {
-                    System.IO.File.Delete(fullPath);
-                }
-                catch(DataException dex)
-                {
-                    return Json(dex);
-                }
-                _photoRepository.DeletePhoto(id);
-            }
-            return Json("lol");
+            _photoRepository.DeletePhoto(id);
+            return Json("success");
         }
     }
 }

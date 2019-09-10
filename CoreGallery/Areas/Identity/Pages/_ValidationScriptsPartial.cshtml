@@ -20,14 +20,11 @@
 <script>
 
     loadData();
-
-
     $(document).on("click", ".customBin", (event) => {
         var photoId = event.target.id;
         deletePhoto(photoId);
     });
 
-    debugger;
     function loadData() {
         jQuery('.gallery').empty();
         $.ajax({
@@ -36,8 +33,17 @@
             dataType: 'json',
             success: (data) => {
                 $.each(data, (i, photos) => {
-                    var photoHtml =
-                        `<div class="image d-block p-0 m-2">
+
+                    generateHtml(photos);
+
+                });
+            },
+            error: (response) => { handleError(response) }
+        });
+    };
+    function generateHtml(photos) {
+        var photoHtml =
+            `<div class="image d-block p-0 m-2">
                              <a href="${photos.path}" class="image">
                                  <img src="${photos.path}" />
                              </a>
@@ -45,23 +51,17 @@
                                  <i class="far fa-trash-alt d-inline customBin" id="${photos.id}"></i>
                             </div>
                         </div>`;
-                    $('.gallery').append(photoHtml);
-                });
-            },
-            error: (response) => { handleError(response) }
-        });
-    };
+        $('.gallery').append(photoHtml);
+    }
 
     function deletePhoto(photoId) {
         if (confirm('Are you sure to delete this Photo?') == true) {
             $.ajax({
                 url: "/UsersPhotos/DeletePhoto",
                 method: "POST",
-                //contentType: 'application/x-www-form-urlencoded; charset=utf-8',
                 dataType: "json",
                 data:
                 {
-                    //__RequestVerificationToken: token,
                     id: photoId
                 },
                 success: () => { loadData(); },
