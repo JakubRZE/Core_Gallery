@@ -6,7 +6,7 @@ ASP.NET MVC Core 2.2 Application \ EF Core \ bootstrap \ jQuery \ AJAX.
 Share your photos:)
 
 <h4>Hosted on:<br />
-https://coregallery.azurewebsites.net/
+www.jgallery.azurewebsites.net/
 
 <br /><br />
 
