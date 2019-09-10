@@ -12,16 +12,16 @@ namespace CoreGallery.Models
         {
             if (!context.Photos.Any())
             {
-                context.AddRange
-                (
-                  new Photo { Description = "pierwsze", Path = @"/images/img1.jpg" },
-                  new Photo { Description = "drugie", Path = @"/images/img2.jpg" },
-                  new Photo { Description = "trzecie", Path = @"/images/img3.jpg" },
-                  new Photo { Description = "czwarte", Path = @"/images/img4.jpg" },
-                  new Photo { Description = "five", Path = @"/images/img5.jpg" }
-                );
+                //context.AddRange
+                //(
+                //  new Photo { Description = "pierwsze", Path = @"/images/img1.jpg" },
+                //  new Photo { Description = "drugie", Path = @"/images/img2.jpg" },
+                //  new Photo { Description = "trzecie", Path = @"/images/img3.jpg" },
+                //  new Photo { Description = "czwarte", Path = @"/images/img4.jpg" },
+                //  new Photo { Description = "five", Path = @"/images/img5.jpg" }
+                //);
 
-                context.SaveChanges();
+                //context.SaveChanges();
             }
         }
 

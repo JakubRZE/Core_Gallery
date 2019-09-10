@@ -2,40 +2,12 @@
 
 $(document).ready(() => {
 
-    AddPhotoButtonSlideToggle();
-
-    DisplayUploadedfileName();
-
-    RunAutocomplete();
-
-    RunMagnificPopupGallery();
-
-    SearchForUsers();
-
-    SubmitPhotoUpload();
+    eventHandler();
+    runMagnificPopupGallery();
 
 });
 
-function AddPhotoButtonSlideToggle() {
-    $("#addPhoto").click(() => {
-        $("#addPhotoPop").slideToggle("slow");
-    });
-}
-
-function DisplayUploadedfileName() {
-    $('input[type=file]').change(function (e) {
-        $in = $(this);
-        $in.next().html($in.val().split("\\").pop());
-    });
-}
-
-function RunAutocomplete() {
-    $("#searchInput").on("click", (e) => {
-        search(e);
-    });
-}
-
-function RunMagnificPopupGallery() {
+function runMagnificPopupGallery() {
     $(".gallery").magnificPopup({
         delegate: 'a',
         type: 'image',
@@ -45,11 +17,29 @@ function RunMagnificPopupGallery() {
     });
 }
 
-function SearchForUsers() {
+function eventHandler() {
+
+    $("#addPhoto").click(() => { $("#addPhotoPop").slideToggle("slow") });
+    $('input[type=file]').change(displayUploadedfileName);
+    $("#searchInput").on("click", search);
     $(".customSearch").on("click", (e) => {
         $("#searchForm").submit();
         e.preventDefault();
     });
+    $("#photoSubmitBtn").on("click", submitPhotoUpload);
+}
+function displayUploadedfileName() {
+    $in = $(this);
+    $in.next().html($in.val().split("\\").pop());
+}
+function submitPhotoUpload() {
+    if ($(".custom-file-input").get(0).files.length === 0) {
+        $(".custom-file-label").effect("shake");
+    }
+    else {
+        $("#photoForm").submit();
+        e.preventDefault();
+    }
 }
 
 function search(event) {
@@ -69,8 +59,8 @@ function search(event) {
             });
 
         },
-        error: () => {
-            alert("Lipa");
+        error: (response) => {
+            handleError(response);
         }
     });
 };
@@ -78,16 +68,4 @@ function search(event) {
 function handleError(response) {
     console.log(response.responseText);
     alert('Something goes worng :<');
-}
-
-function SubmitPhotoUpload() {
-    $("#photoSubmitBtn").on("click", () => {
-        if ($(".custom-file-input").get(0).files.length === 0) {
-            $(".custom-file-label").effect("shake");
-        }
-        else {
-            $("#photoForm").submit();
-            e.preventDefault();
-        }
-    });
 }
